@@ -4,19 +4,19 @@
  	 	font-family: 'Open Sans', sans-serif;
  	 }
 
- 	    .table 
+ 	    table 
       	{ 
-      		border: 2px solid blue; border-spacing: 0;
+      		border: 1px solid blue; border-spacing: 0;
       	}
- 	    .table-header 
+ 	    thead 
       	{ 
       		background: powderblue; font-weight: 800;
       	}
-      	th
-      	{
-      		border: 1px solid black; border-spacing: 0;
-      	}
-            #hand-made
+          td, th
+            {
+                  border: 1px solid black; border-spacing: 0;
+            }
+            /*#hand-made
             {
                   display: none;
-            }
+            }*/

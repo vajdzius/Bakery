@@ -6,26 +6,26 @@
 </head>
 <body>
 
-<table class="table">
-	<thead class="table-header">
+<table id="hand-made">
+	<thead>
 		<tr>
-			<th class="table-th" rowspan="2">Pavadinimas</th>
-			<th class="table-th" colspan="6">2017-11-09</th>
-			<th class="table-th" colspan="6">2017-11-10</th>
+			<th rowspan="2">Pavadinimas</th>
+			<th colspan="5">2017-11-09</th>
+			<th colspan="5">2017-11-10</th>
 		</tr>
 		<tr>
-			<th class="table-th">VL</th> <!-- Vakarykštis likutis-->
-			<th class="table-th">PG</th> <!-- Pagaminta-->
-			<th class="table-th">PR</th> <!-- Parduota-->
-			<th class="table-th">SG</th> <!-- Sugadinta-->
-			<th class="table-th">GL</th> <!-- Galutinis likutis-->
-			<th class="table-th">VL</th> <!-- Vakarykštis likutis-->
-			<th class="table-th">PG</th> <!-- Pagaminta-->
-			<th class="table-th">PR</th> <!-- Parduota-->
-			<th class="table-th">SG</th> <!-- Sugadinta-->
-			<th class="table-th">GL</th> <!-- Galutinis likutis-->
+			<th>VL</th> <!-- Vakarykštis likutis-->
+			<th>PG</th> <!-- Pagaminta-->
+			<th>PR</th> <!-- Parduota-->
+			<th>SG</th> <!-- Sugadinta-->
+			<th>GL</th> <!-- Galutinis likutis-->
+			<th>VL</th> <!-- Vakarykštis likutis-->
+			<th>PG</th> <!-- Pagaminta-->
+			<th>PR</th> <!-- Parduota-->
+			<th>SG</th> <!-- Sugadinta-->
+			<th>GL</th> <!-- Galutinis likutis-->
 	</thead>
-	<tbody class="table-body">
+	<tbody>
 		<tr>
 			<td>Aguoninė</td>
 			<td>5</td>
@@ -95,7 +95,5 @@
 </table>
 
 <?php @include_once('app/app.php');?>
-
-
 </body>
 </html>
