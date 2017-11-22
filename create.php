@@ -1,15 +1,50 @@
 <?php
 
 $new_data = ($_POST);
-//formatData($new_data);
-//var_dump($new_data);
 
-$existing_data = json_decode (file_get_contents('data/bakery-data.json'));
-$existing_data = objectToArray($existing_data);
+$required_fields = ["date", "product", "VL", "PG", "PR", "SG", "GL"];
 
+$validData = true;
+
+foreach ($required_fields as $value)
+{
+	if (!isset($new_data[$value]) || empty($new_data[$value]))
+	{
+		$validData = false;
+		echo "Nerastas parametras: $value <br>";
+	}
+}
+if (!$validData)
+	return;
+
+	/*$date = $_POST['date'];
+	$product = $_POST['product'];
+	$VL = $_POST['VL'];
+	$PG = $_POST['PG'];
+	$PR = $_POST['PR'];
+	$SG = $_POST['SG'];
+	$GL = $_POST['GL'];
+
+	if(empty($date) || empty($product) || empty($VL) || empty($PG) || empty($PR) || empty($SG) || empty($GL))
+	{
+    echo "Užpildyti ne visi būtini laukeliai!";
+	}
+	else
+	{
+		$existing_data = json_decode (file_get_contents('data/bakery-data.json'), true);
+		updateDate($existing_data, $new_data);
+		file_put_contents('data/bakery-data.json', json_encode($existing_data));
+	}*/
+
+
+//reading data
+
+//$existing_data = objectToArray($existing_data);
+
+$existing_data = json_decode (file_get_contents('data/bakery-data.json'), true);
 updateDate ($existing_data, $new_data);
-
 file_put_contents('data/bakery-data.json', json_encode($existing_data));
+
 
 function objectToArray(stdClass $obj) : array
 {

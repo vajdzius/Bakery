@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<a class="new-class" href="new.php">Įvesti naujos dienos duomenis</a>
+<a class="new-class" href="new.php">Įvesti naujus duomenis</a>
 
 <?php @include_once('app/app.php')?>
 </body>

@@ -5,15 +5,27 @@
 	<link rel="stylesheet" href="css/app.css">
 </head>
 <body style="text-align: left;">
-	<form method="POST" action="create.php">
+
+	<form method="POST" name="form" action="create.php">
 		
     <div>Data :</div>
     <input type="date" name="date"><br>
 
     <div>Prekė</div>
     <select name="product">
-    	<option value="1">Aguoninė</option>
-    	<option value="2">Varškės</option>
+    	<?php
+    	//<option value="p-1">Aguoninė</option>
+    	//<option value="p-2">Varškės</option>
+    	//<option value="p-3">Obuolių pyragas</option>
+
+    	$options = json_decode(file_get_contents('data/product.json'), true);
+
+    	foreach ($options as $key => $value) 
+    	{
+    		echo "<option value=\"$key\">$value</option>";
+    	}
+
+    	?>
     </select>
 
 
@@ -41,5 +53,6 @@
 	<th>GL</th> -->
 
 	</form>
+
 </body>
 </html>
