@@ -12,6 +12,9 @@ function db_connect ()
 	{
 		die("Could not connect");
 	}
+
+	$conn->set_charset('utf8mb4');
+
 	return $conn;
 }
 
@@ -22,26 +25,3 @@ function db_query(string $query)
 	$conn->close();
 	return $result;
 }
-
-
-$query = "SELECT * FROM `bakery_products`";
-
-
-$result = db_query ($query);
-
-foreach ($result as $key => $value) 
-	{
-		print_r ($value);
-	}
-
-
-/*
-$result = $conn->query('SHOW TABLES');
-
-	foreach ($result as $key => $value) 
-	{
-		print_r($value);
-	}
-
-mysqli_close($conn);
-*/

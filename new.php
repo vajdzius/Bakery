@@ -14,16 +14,18 @@
     <div>Prekė</div>
     <select name="product_id">
     	<?php
-    	//<option value="p-1">Aguoninė</option>
-    	//<option value="p-2">Varškės</option>
-    	//<option value="p-3">Obuolių pyragas</option>
+    	
+    	@include_once('app/database.php');
 
-    	$options = json_decode(file_get_contents('data/product.json'), true);
+    	$query = "SELECT `id`, `name` FROM `bakery_products` WHERE `deleted_at` IS NULL ORDER BY `name` ASC";
 
-    	foreach ($options as $key => $value) 
-    	{
-    		echo "<option value=\"$key\">$value</option>";
-    	}
+		$result = db_query ($query);
+
+		foreach ($result as $value) 
+
+    		{
+    		echo '<option value="' . $value['id'] . '">' . $value['name'] . '</option>';
+    		}
 
     	?>
     </select>
