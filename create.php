@@ -2,7 +2,7 @@
 
 $new_data = ($_POST);
 
-$required_fields = ["date", "product", "VL", "PG", "PR", "SG", "GL"];
+$required_fields = ["date", "product_id", "initial", "produced", "sold", "damaged", "closed"];
 
 $validData = true;
 
@@ -16,6 +16,15 @@ foreach ($required_fields as $value)
 }
 if (!$validData)
 	return;
+
+@include_once('app/database.php');
+
+$query = db_insertQuery("bakery_products_history", $new_data, true);
+
+$result = db_query ($query);
+
+print_r($result);
+
 
 	/*$date = $_POST['date'];
 	$product = $_POST['product'];
@@ -34,7 +43,7 @@ if (!$validData)
 		$existing_data = json_decode (file_get_contents('data/bakery-data.json'), true);
 		updateDate($existing_data, $new_data);
 		file_put_contents('data/bakery-data.json', json_encode($existing_data));
-	}*/
+	}
 
 
 //reading data
@@ -61,8 +70,8 @@ function objectToArray(stdClass $obj) : array
 
 function updateDate (&$existing_data, $new_data)
 {
-	//print_r($existing_data);
-	//print_r($new_data);
+	print_r($existing_data);
+	print_r($new_data);
 
 	if (isset($existing_data[$new_data ['date']]))
 	{
@@ -99,3 +108,4 @@ function createNewProduct ($existing_data, $new_data)
 		];
 	return $existing_data;
 }
+*/
