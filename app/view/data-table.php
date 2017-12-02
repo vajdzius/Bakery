@@ -1,21 +1,42 @@
 <?php
 
-$days = $keys = '';
-$rows = [];
+$rows = $days = [];
+$keys = '';
 
-ksort($data);
 
-$products_names = json_decode(file_get_contents('data/product.json'), true);
+	foreach ($products as $value) {
+		
+		if (!isset($rows[$value['id']]))
+		{
+			$rows[$value['id']] = [];
+			$rows[$value['id']]['name'] = '<td>' . $value['name'] . '</td>';
+		}
+	}
 
-	foreach ($data as $key => $value) {
-					$days .= "<th class=\"table-th\" colspan=\"5\">$key</th>";
-					$keys .= "<th>VL</th><th>PG</th><th>PR</th><th>SG</th><th>GL</th>";
+		foreach ($productsHistory as $value) {
+
+			if (!isset($days[$value['date']]))
+			{
+				$days[$value['date']] = $value['date'];
+				$keys .= "<th>VL</th><th>PG</th><th>PR</th><th>SG</th><th>GL</th>";
+			
+				foreach ($rows as &$product) {
+			
+				$product[$value['date']] = '<td></td><td></td><td></td><td></td><td></td>';
+		
+				}
+		}
+
+
+			/*$rows[$value['product_id']] .= '<td>' . $value['initial'] .'</td>';
+			$rows[$value['product_id']] .= '<td>' . $value['produced'] .'</td>';
+			$rows[$value['product_id']] .= '<td>' . $value['sold'] .'</td>';
+			$rows[$value['product_id']] .= '<td>' . $value['damaged'] .'</td>';
+			$rows[$value['product_id']] .= '<td>' . $value['closed'] .'</td>';
+			*/
+
 					
-					//print_r($key);
-					//print_r($value);
-					//return;
-
-			foreach ($products_names as $key => $name){
+			/*foreach ($products_names as $key => $name){
 				
 				if (!isset($rows[$key]))
 				{
@@ -35,17 +56,20 @@ $products_names = json_decode(file_get_contents('data/product.json'), true);
 					}
 
 
-		 	}
+		 	}*/
 	}
+
 
 ?>
 
 <table>
 	<thead>
 		<tr>
-			<th class="table-th" rowspan="2">Pavadinimas</th>
+			<th rowspan="2">Pavadinimas</th>
 			<?php
-				 echo $days;
+				 foreach ($days as $date) {
+				 echo '<th colspan="5">' . $date . '</th>';	
+				 }
 			?>
 		</tr>
 		<tr>
@@ -55,11 +79,19 @@ $products_names = json_decode(file_get_contents('data/product.json'), true);
 		</tr>
 
 	</thead>
-	<tbody class="table-body">
+	<tbody>
 
 	<?php
-		foreach ($rows as $row) {
-			echo '<tr>' . $row . '</tr>';		
+		foreach ($rows as $data) {
+
+			echo '<tr>';
+
+			foreach ($data as $key => $value) {
+				
+				echo $value;	
+			}	
+
+			echo '</tr>';
 		}
 	?>
 	</tbody>
