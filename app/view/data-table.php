@@ -21,44 +21,15 @@ $keys = '';
 				$keys .= "<th>VL</th><th>PG</th><th>PR</th><th>SG</th><th>GL</th>";
 			
 				foreach ($rows as &$product) {
-			
+
 				$product[$value['date']] = '<td></td><td></td><td></td><td></td><td></td>';
-		
+
 				}
+			}
+
+			$rows[$value['product_id']][$value['date']] = '<td>' . $value['initial'] . '</td>' . '<td>' . $value['produced'] . '</td>' . '<td>' . $value['sold'] .'</td>' . '<td>' . $value['damaged'] . '</td>' . '<td>' . $value['closed'] . '</td>';		
+
 		}
-
-
-			/*$rows[$value['product_id']] .= '<td>' . $value['initial'] .'</td>';
-			$rows[$value['product_id']] .= '<td>' . $value['produced'] .'</td>';
-			$rows[$value['product_id']] .= '<td>' . $value['sold'] .'</td>';
-			$rows[$value['product_id']] .= '<td>' . $value['damaged'] .'</td>';
-			$rows[$value['product_id']] .= '<td>' . $value['closed'] .'</td>';
-			*/
-
-					
-			/*foreach ($products_names as $key => $name){
-				
-				if (!isset($rows[$key]))
-				{
-					$rows[$key] = "<td>$name</td>";
-				}
-
-				if (isset($value[$key]))
-				{
-						foreach ($value[$key] as $amount) {
-						$rows[$key] .= "<td>$amount</td>";
-						}
-						
-				}
-					else 
-					{
-						$rows[$key] .= "<td></td><td></td><td></td><td></td><td></td>"; 
-					}
-
-
-		 	}*/
-	}
-
 
 ?>
 
@@ -96,21 +67,3 @@ $keys = '';
 	?>
 	</tbody>
 </table>
-
-<?php
-/*
-var_dump($data);
-return;
-
-$html = '';
-
-$html .= '<table>';
-$html .= '<thead>';
-
-$html .= '</thead>';
-$html .= '</table>';
-
-echo $html;
-
-return;*/
-?>

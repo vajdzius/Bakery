@@ -14,6 +14,7 @@ foreach ($required_fields as $value)
 		echo "Nerastas parametras: $value <br>";
 	}
 }
+
 if (!$validData)
 	return;
 
