@@ -8,7 +8,7 @@ $validData = true;
 
 foreach ($required_fields as $value)
 {
-	if (!isset($new_data[$value]) || empty($new_data[$value]))
+	if (!isset($new_data[$value]) || strlen($new_data[$value]) < 1 || ($new_data[$value]) < 0)
 	{
 		$validData = false;
 		echo "Nerastas parametras: $value <br>";
