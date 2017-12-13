@@ -1,27 +1,21 @@
-<?php
-
-include_once('app/dto/Bun.php');
-include_once('app/dto/Strawberry.php');
-use app\dto\Strawberry;
-use app\dto\Bun;
-
-$bun = new \app\dto\Strawberry();
-$bun->name;
-
-?>
-
-<!--<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>Bakery</title>
-	<link rel="stylesheet" type="text/css" href="css/app.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Bakery</title>
 </head>
 <body>
 
-<a class="new-class" href="new.php">Įvesti naujus duomenis</a>
+<?php
 
-<?php //@include_once('app/app.php')
+include('include.php');
+
+use app\Bakery;
+
+$app = new Bakery();
 
 ?>
+
 </body>
 </html>
