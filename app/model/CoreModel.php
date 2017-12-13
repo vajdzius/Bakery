@@ -33,6 +33,8 @@ class CoreModel
 
     protected function query(string $query)
     {
+
+
         $this->connect();
 
         $result = $this->conn->query ($query);

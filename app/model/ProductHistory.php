@@ -5,14 +5,14 @@ namespace app\model;
 use app\model\interfaces\destroyable;
 use app\model\interfaces\Manageable;
 
-class Product_history extends CoreModel implements Manageable, destroyable
+class ProductHistory extends CoreModel implements Manageable, destroyable
 {
 
-        protected $table ='bakery_products_history';
+    protected $table ='bakery_products_history';
 
     public function create(array $data)
     {
-                $query = $this->generateQuery( $data, true);
+                $query = $this->generateInsertQuery($data,  true);
                 print_r($this->query($query));
     }
     public function delete()

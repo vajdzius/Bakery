@@ -1,64 +1,69 @@
 <?php
 
-namespace app;
+namespace app\controller;
 
-use app\model\Product_history;
+use app\model\Product;
+use app\model\ProductHistory;
 
-class Product_historyController
+class ProductHistoryController
 {
-        public function create() : string
-     {
-        return file_get_contents('app/view/product_history/new.php');
-    }
-    public function store() : string
+        public function create()
+        {
+            $template = new TemplateEngineController('new-product-history');
+
+            $value = $this->getProductOptions();
+
+            $template->set('productOptions', $value);
+            $template->echoOutput();
+        }
+
+    private function getProductOptions(): string
     {
-                //Product::create($_POST);
-                //(new Product())->create($_POST);
+        $result = (new Product())->list();
+        $options = '';
 
-                $model = new Product_history();
-                $model ->create($_POST);
+        foreach ($result as $value){
 
-                //Redirected to list
-                 header('Location:?view=product_history&action=list');
+            $options .= '<option value="' . $value['id'] . '">' . $value['name'] . '</option>';
+        }
+        return $options;
+    }
+
+    public function store()
+    {
+        $model = new ProductHistory();
+        $model->create($_POST);
+
+        // Redirecting to LIST
+        header('Location: ?view=product-history&action=list');
+        exit();
     }
 
     public function list()
-            {
-                $model = new Product_history();
-                $result = $model->list();
+    {
+        $model = new ProductHistory();
 
-                $header= '';
-                $data='';
+        $result = $model->list();
 
-                foreach ($result as $item)
-                    {
-                        if( $header== '')
-                            {
-                               foreach ($item as $key => $value)
-                                    {
-                                        $header .='<th>' . $key . '</th>';
-                                    }
+        $header = '';
+        $data = '';
+
+        foreach ($result as $item) {
+
+            if ($header == '') {
+                foreach ($item as $key => $value) {
+                    $header .= '<th>' . $key . '</th>';
+                }
             }
+
             $data .= '<tr>';
 
-            foreach ($item as $key => $value)
-                            {
-                                $data .='<td>' . $value . '</td>';
-                            }
-            $data .='</tr>';
+            foreach ($item as $key => $value) {
+                $data .= '<td>' . $value . '</td>';
+            }
 
+            $data .= '</tr>';
         }
-        echo "<table class='table-secondary'>";
-        echo "<thead>";
-        echo "<tr>";
-        echo $header;
-        echo "</tr>";
-        echo "</thead>";
-        echo "<tbody>";
-        echo $data;
-        echo "</tbody>";
-        echo "</table>";
 
     }
-
 }

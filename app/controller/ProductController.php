@@ -13,7 +13,7 @@ class ProductController
         //return file_get_contents('app/view/product/new-product.tpl');
     }
 
-    public function store () : string
+    public function store ()
     {
         // Product::create($_POST);
 
@@ -55,7 +55,7 @@ class ProductController
             $data .= '</tr>';
         }
 
-        $template = new TemplateEngineController('table-list');
+        $template = new TemplateEngineController('table_list');
 
         $template->set ('header', $header);
         $template->set ('data', $data);

@@ -20,7 +20,7 @@
         <input type="number" step="0.001" name="prime_cost"> <br>
 
         <div>Pardavimo kaina:</div>
-        <input type="number" step="0.001" name="sale_price"> <br> <br>
+        <input type="number" step="0.001" name="sales_price"> <br> <br>
 
         <input type="submit" class="btn ro" value="Išsaugoti duomenis">
     </form>
