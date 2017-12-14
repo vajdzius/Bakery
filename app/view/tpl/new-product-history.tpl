@@ -9,7 +9,7 @@
     [@productOptions]
     </select>
 
-    <div>Vakarikštis likutis :</div>
+    <div>Vakarykštis likutis :</div>
     <input type="number" name="initial"> <br>
 
     <div>Pagaminta :</div>
