@@ -65,7 +65,7 @@ class UsersController
 
             $data .= '</tr>';
         }
-        $template = new TemplateEngineController('new-user');
+        $template = new TemplateEngineController('table_list');
 
         $template->set ('header', $header);
         $template->set ('data', $data);
