@@ -31,7 +31,7 @@ class UsersController
     public function store()
     {
         $data = $_POST;
-        $data['password'] = sha1($data['password']);
+        $data['password'] = sha1($data['password'] . SALT);
         $model = new Users();
         $model->create($data);
 
@@ -72,5 +72,23 @@ class UsersController
 
 
         $template->echoOutput();
+    }
+
+    public function login()
+    {
+        $template = new TemplateEngineController('login');
+        $template->echoOutput();
+    }
+
+    public function auth()
+    {
+        $data = $_POST;
+        $data['password'] = sha1($data['password'] . SALT);
+
+        print_r($data);
+
+        $model = new Users();
+        $result = $model->auth($data);
+        print_r($result);
     }
 }

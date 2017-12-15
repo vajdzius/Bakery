@@ -13,3 +13,5 @@ include('app/model/CoreModel.php');
 include('app/model/Product.php');
 include('app/model/ProductHistory.php');
 include('app/model/Users.php');
+
+define ('SALT', 'great-success');
