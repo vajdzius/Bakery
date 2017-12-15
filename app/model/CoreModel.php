@@ -76,4 +76,9 @@ class CoreModel
         $query = "SELECT * FROM `" . $this->table . "` WHERE `deleted_at` IS NULL";
         return $this->query($query);
     }
+    public function find (string $id)
+    {
+        $query = "SELECT * FROM `" . $this->table . "` WHERE `deleted_at` IS NULL AND `id` = '$id'";
+        return $this->query($query);
+    }
 }

@@ -89,6 +89,30 @@ class UsersController
 
         $model = new Users();
         $result = $model->auth($data);
-        print_r($result);
+
+        // TODO check if result has any rows
+
+        foreach ($result as $key =>$value)
+        {
+            print_r($value);
+            setcookie( 'user', $value['id'],  time() + 3600);
+            header( 'Location:?view=product-history&action=new');
+            exit();
+        }
+    }
+
+    public function isLogged()
+    {
+        if(isset($_COOKIE['user']))
+        {
+            $model = new Users();
+            $result = $model->find($_COOKIE['user']);
+
+            if($result->num_rows != 1)
+            die ('Please login');
+        }
+        else
+            die ('Please login');
+
     }
 }

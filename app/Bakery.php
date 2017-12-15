@@ -18,11 +18,14 @@ class Bakery
             (new UsersController())->login();
             die();
         }
+
         $view = $_GET['view'];
         $action = $_GET['action'];
 
         if ($method == 'GET')
         {
+            (new UsersController())->isLogged();
+
             switch ($view)
             {
                 case 'product':
@@ -58,21 +61,29 @@ class Bakery
                 case 'product':
 
                     if ($action == 'create')
+                    {
+                        (new UsersController())->isLogged();
                         (new ProductController())->store();
-
+                    }
                     break;
 
                 case 'product-history':
 
                     if ($action == 'create')
+                    {
+                        (new UsersController())->isLogged();
                         (new ProductHistoryController())->store();
+                    }
 
                     break;
 
                 case 'new-user':
 
                     if ($action == 'create')
+                    {
+                        (new UsersController())->isLogged();
                         (new UsersController())->store();
+                    }
 
                     if($action == 'auth')
                         (new UsersController())->auth();
