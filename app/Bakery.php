@@ -34,6 +34,8 @@ class Bakery
                         (new ProductController())->create();
                     elseif ($action == 'list')
                         (new ProductController())->list();
+                    elseif($action == 'edit')
+                        (new ProductController())->edit();
 
                     break;
 
@@ -65,6 +67,9 @@ class Bakery
                         (new UsersController())->isLogged();
                         (new ProductController())->store();
                     }
+                    if ($action == 'update')
+                        (new ProductController())->update();
+
                     break;
 
                 case 'product-history':

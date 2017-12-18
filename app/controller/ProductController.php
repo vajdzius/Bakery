@@ -50,7 +50,7 @@ class ProductController
                 }
             }
 
-            $data .= '<tr>';
+            $data .= '<tr onclick="window.location=\'?view=product&action=edit&id=' . $item['id'] . '\'">';
 
             foreach ($item as $key => $value) {
 
@@ -59,11 +59,10 @@ class ProductController
 
                 else
                     $data .= '<td>' . $value . '</td>';
-
-                $data .= '<td>' . $value . '</td>';
             }
 
             $data .= '</tr>';
+
         }
 
         $template = new TemplateEngineController('table_list');
@@ -72,5 +71,41 @@ class ProductController
         $template->set ('data', $data);
 
         $template->echoOutput();
+    }
+
+    public function edit()
+    {
+        $model = new Product();
+        $result = $model->find($_GET['id']);
+        $record = null;
+
+        foreach ($result as $value)
+        {
+            $record = $value;
+        }
+        if (!$record)
+            die ('Record not found');
+
+        $template = new TemplateEngineController( 'edit-product');
+        $template->set('id', $record['id']);
+        $template->set('ean', $record['ean']);
+        $template->set('unit', $record['unit']);
+        $template->set('name', $record['name']);
+        $template->set('weight', $record['weight']);
+        $template->set('prime_cost', $record['prime_cost']);
+        $template->set('sales_price', $record['sales_price']);
+        $template->set('picture', $record['picture']);
+
+        $template->echoOutput();
+
+    }
+
+    public function update()
+    {
+        $model = new Product();
+        $model->update($_GET['id']);
+
+        header('Location: ?view=product&action=list');
+        exit();
     }
 }
