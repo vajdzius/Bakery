@@ -53,6 +53,13 @@ class ProductController
             $data .= '<tr>';
 
             foreach ($item as $key => $value) {
+
+                if($key == 'picture')
+                    $data .= '<td><img src="' . $value . '" width="200px"></td>';
+
+                else
+                    $data .= '<td>' . $value . '</td>';
+
                 $data .= '<td>' . $value . '</td>';
             }
 
