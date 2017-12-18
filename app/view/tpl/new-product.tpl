@@ -1,5 +1,5 @@
 <div style="text-align: center;">
-    <form method="POST" action="?view=product&action=create">
+    <form method="POST" action="?view=product&action=create" enctype="multipart/form-data">
 
         <div>EAN :</div>
         <input type="number" name="ean"> <br>
@@ -22,6 +22,9 @@
         <div>Pardavimo kaina:</div>
         <input type="number" step="0.001" name="sales_price"><br>
 
+        <div>Nuotrauka:</div>
+        <input type="file" multiple accept="image/jpeg, image/png" name="picture[]"><br>
+
         <input type="submit" class="btn ro" value="Išsaugoti duomenis">
     </form>
-</div>
+</div>/
