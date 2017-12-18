@@ -15,16 +15,16 @@ class ProductController
 
     public function store ()
     {
-        // Product::create($_POST);
+        $data = $_POST;
 
-        // (new Product())->create($_POST);
+        $destination = 'uploads/' . $_FILES['picture']['name'];
 
-        print_r($_POST);
-        print_r($_FILES);
-        die();
+        move_uploaded_file($_FILES['picture']['tmp_name'], $destination);
+
+        $data['picture'] = $destination;
 
         $model = new Product();
-        $model->create($_POST);
+        $model->create($data);
 
         // Redirecting to LIST
         header('Location: ?view=product&action=list');

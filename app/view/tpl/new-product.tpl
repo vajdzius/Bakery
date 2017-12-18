@@ -23,7 +23,7 @@
         <input type="number" step="0.001" name="sales_price"><br>
 
         <div>Nuotrauka:</div>
-        <input type="file" multiple accept="image/jpeg, image/png" name="picture[]"><br>
+        <input type="file" accept="image/jpeg, image/png" name="picture"><br>
 
         <input type="submit" class="btn ro" value="Išsaugoti duomenis">
     </form>
