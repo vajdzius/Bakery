@@ -89,12 +89,13 @@ class ProductController
         $template = new TemplateEngineController( 'edit-product');
         $template->set('id', $record['id']);
         $template->set('ean', $record['ean']);
-        $template->set('unit', $record['unit']);
         $template->set('name', $record['name']);
         $template->set('weight', $record['weight']);
         $template->set('prime_cost', $record['prime_cost']);
         $template->set('sales_price', $record['sales_price']);
         $template->set('picture', $record['picture']);
+
+        $template->set('unit_' . $record['unit'], 'selected');
 
         $template->echoOutput();
 

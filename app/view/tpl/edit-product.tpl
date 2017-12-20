@@ -6,8 +6,8 @@
 
         <div>Mato vienetas:</div>
         <select name="unit">
-            <option selected value="KG">KG</option>
-            <option selected value="PCS">VNT</option>
+            <option value="KG" [@unit_KG]>KG</option>
+            <option value="PCS" [@unit_PCS]>VNT</option>
         </select> <br>
 
         <div>Pavadinimas:</div>
